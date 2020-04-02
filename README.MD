@@ -6,3 +6,5 @@ Program to learn to use the Python Arcade library for building games with nephew
 - Imports the arcade library
 - Draws a grid
 - User clicks with trackpad/mouse to draw green lines
+
+Learning is fun!
