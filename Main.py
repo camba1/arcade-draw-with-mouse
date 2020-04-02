@@ -59,8 +59,14 @@ class MyGame(arcade.Window):
             for column in range(COLUMN_COUNT):
                 if self.grid[row][column] == 0:
                     color = arcade.color.WHITE
-                else:
+                elif self.grid[row][column] == 1:
                     color = arcade.color.GREEN
+                elif self.grid[row][column] == 2:
+                    color = arcade.color.RED
+                elif self.grid[row][column] == 3:
+                    color = arcade.color.MEAT_BROWN
+                else:
+                    color = arcade.color.BLUE
 
                 x = (MARGIN + WIDTH) * column + MARGIN + WIDTH // 2
                 y = (MARGIN + HEIGHT) * row + MARGIN + HEIGHT // 2
@@ -84,7 +90,7 @@ class MyGame(arcade.Window):
         column = int(x // (WIDTH + MARGIN))
         row = int(y // (HEIGHT + MARGIN))
 
-        print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column}")
+        print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column})")
 
         # Make sure we are on-grid. It is possible to click in the upper right
         # corner in the margin and go to a grid location that doesn't exist
@@ -93,6 +99,10 @@ class MyGame(arcade.Window):
             # Flip the location between 1 and 0.
             if self.grid[row][column] == 0:
                 self.grid[row][column] = 1
+            elif self.grid[row][column] == 1:
+                self.grid[row][column] = 2
+            elif self.grid[row][column] == 2:
+                self.grid[row][column] = 3
             else:
                 self.grid[row][column] = 0
 
