@@ -52,6 +52,7 @@ class MyGame(arcade.Window):
 
         arcade.set_background_color(arcade.color.BLACK)
         self.recreate_grid()
+
     def recreate_grid(self):
         self.shape_list = arcade.ShapeElementList()
         for row in range(ROW_COUNT):
@@ -60,17 +61,19 @@ class MyGame(arcade.Window):
                     color = arcade.color.WHITE
                 else:
                     color = arcade.color.GREEN
-            x = (MARGIN + WIDTH) * column + MARGIN + WIDTH // 2
-            x = (MARGIN + HEIGHT) * row + MARGIN + HEIGHT // 2
 
-            current_rect = arcade.create_rectangle_filled(x ,y , WIDTH, HEIGHT, color)
-            self.shape_list.append(current_rect)
+                x = (MARGIN + WIDTH) * column + MARGIN + WIDTH // 2
+                y = (MARGIN + HEIGHT) * row + MARGIN + HEIGHT // 2
+
+                current_rect = arcade.create_rectangle_filled(x ,y , WIDTH, HEIGHT, color)
+                self.shape_list.append(current_rect)
 
     def on_draw(self):
         """
         Render the screen.
         """
-        pass
+        arcade.start_render()
+        self.shape_list.draw()
 
     def on_mouse_press(self, x, y, button, modifiers):
         """
