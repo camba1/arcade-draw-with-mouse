@@ -53,7 +53,18 @@ class MyGame(arcade.Window):
         arcade.set_background_color(arcade.color.BLACK)
         self.recreate_grid()
     def recreate_grid(self):
-        pass
+        self.shape_list = arcade.ShapeElementList()
+        for row in range(ROW_COUNT):
+            for column in range(COLUMN_COUNT):
+                if self.grid[row][column] == 0:
+                    color = arcade.color.WHITE
+                else:
+                    color = arcade.color.GREEN
+            x = (MARGIN + WIDTH) * column + MARGIN + WIDTH // 2
+            x = (MARGIN + HEIGHT) * row + MARGIN + HEIGHT // 2
+
+            current_rect = arcade.create_rectangle_filled(x ,y , WIDTH, HEIGHT, color)
+            self.shape_list.append(current_rect)
 
     def on_draw(self):
         """
