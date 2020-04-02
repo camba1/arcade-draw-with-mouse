@@ -36,8 +36,22 @@ class MyGame(arcade.Window):
         """
         Set up the application.
         """
-        pass
+        super().__init__(width, height, title)
 
+        self.shape_list = None
+
+        # Create a 2-dimensional array. A two dimensional
+        # array is simply a list of facts
+        self.grid = []
+        for row in range(ROW_COUNT):
+            # Add an empty array that will hold each cell
+            # in this row
+            self.grid.append([])
+            for column in range(COLUMN_COUNT):
+                self.grid[row].append(0) # Append a cell
+
+        arcade.set_background_color(arcade.color.BLACK)
+        self.recreate_grid()
     def recreate_grid(self):
         self.shape_list = arcade.ShapeElementList()
         for row in range(ROW_COUNT):
