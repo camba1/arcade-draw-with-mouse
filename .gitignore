@@ -141,3 +141,10 @@ cython_debug/
 # static files generated from Django application using `collectstatic`
 media
 static
+/.idea/.gitignore
+/.idea/arrayBackedGrid.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/rSettings.xml
+/.idea/vcs.xml
