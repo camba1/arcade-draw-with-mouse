@@ -61,7 +61,7 @@ class MyGame(arcade.Window):
                 else:
                     color = arcade.color.GREEN
             x = (MARGIN + WIDTH) * column + MARGIN + WIDTH // 2
-            x = (MARGIN + HEIGHT) * row + MARGIN + HEIGHT // 2
+            y = (MARGIN + HEIGHT) * row + MARGIN + HEIGHT // 2
 
             current_rect = arcade.create_rectangle_filled(x ,y , WIDTH, HEIGHT, color)
             self.shape_list.append(current_rect)
@@ -76,8 +76,24 @@ class MyGame(arcade.Window):
         """
         Called when the user presses a mouse button.
         """
-        pass
 
+        # Change the x/y screen coordinates to grid coordinates
+        column = int(x // (WIDTH + MARGIN))
+        row = int(y // (HEIGHT + MARGIN))
+
+        print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column}")
+
+        # Make sure we are on-grid. It is possible to click in the upper right
+        # corner in the margin and go to a grid location that doesn't exist
+        if row < ROW_COUNT and column < COLUMN_COUNT:
+
+            # Flip the location between 1 and 0.
+            if self.grid[row][column] == 0:
+                self.grid[row][column] = 1
+            else:
+                self.grid[row][column] = 0
+
+        self.recreate_grid()
 
 def main():
     MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
